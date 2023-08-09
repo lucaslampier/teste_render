@@ -33,7 +33,7 @@ def calc_energia_wavelet(x):
 
 def get_fig_dwt(bomba, corrente_ml, std_mult=1):
     dbfile = open(
-        "/home/lucas/Desktop/teste_dash/meus_testes/references_dwt.pickle",
+        "references_dwt.pickle",
         "rb",
     )
     references = pickle.load(dbfile)
