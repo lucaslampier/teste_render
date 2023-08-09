@@ -1,0 +1,10 @@
+dash
+numpy
+pandas
+plotly
+pyarrow
+dash_daq
+dash_auth
+dash_mantine_components
+dash_bootstrap_components
+gunicorn
