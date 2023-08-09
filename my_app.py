@@ -653,8 +653,8 @@ tab_container = dbc.Container(
             id="tabs",
             active_tab="tab-1",
             children=[
-                dbc.Tab(label="Guia 1", tab_id="tab-1"),
-                dbc.Tab(label="Guia 2", tab_id="tab-2"),
+                dbc.Tab(label="Analise de energia", tab_id="tab-1"),
+                dbc.Tab(label="Analise MCSA", tab_id="tab-2"),
             ],
         ),
         html.Hr(),
