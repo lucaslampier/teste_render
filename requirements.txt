@@ -8,3 +8,4 @@ dash_auth
 dash_mantine_components
 dash_bootstrap_components
 gunicorn
+PyWavelets
