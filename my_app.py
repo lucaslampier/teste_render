@@ -5,14 +5,16 @@ import pandas as pd
 import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
 import dash_auth
+from flask import Flask,request
+import numpy as np
+import plotly.graph_objects as go
+
+
 from get_fft_figs import get_fft_reference
 from get_park_figs import get_park_figures
 from get_demodulacao_figs import get_demod_fig
 from get_dwt_fig import get_fig_dwt
 
-
-import numpy as np
-import plotly.graph_objects as go
 
 
 roxo_claro = "#753BBD"
@@ -41,13 +43,26 @@ for bomba in ["Piranema_Bomba_B3", "Piranema_Soprador_S3", "Araras_Bomba_B1"]:
 # Initialize the app - incorporate a Dash Mantine theme
 external_stylesheets = [dbc.themes.COSMO]  # [dmc.theme.DEFAULT_COLORS]
 
+flask_server = Flask(__name__)
 app = Dash(
     __name__,
     external_stylesheets=external_stylesheets,
     suppress_callback_exceptions=True,
+    server=flask_server
 )
 
 server = app.server
+
+
+@flask_server.route('/receive-data', methods=['POST'])
+def receive_data():
+    print(request.data.decode())
+    # data = request.json  # Dados recebidos via POST em formato JSON
+    # print(data)
+    return 'Dados recebidos com sucesso!'
+
+
+
 
 auth = dash_auth.BasicAuth(
     app,
@@ -586,8 +601,9 @@ fig_distorcao_harmonica_tensao = dcc.Graph(
 distorcao_harmonica_tensao = dmc.Grid(
     [
         dmc.Col(html.Div([
-            html.Div(["Distorção maxima na tensão", html.Br(),
-                      str(5)+"%"], style=style_variavel),
+            html.Div([
+                "Distorção maxima na tensão", html.Br(),
+                str(5)+"%"], style=style_variavel),
             ]), span=2),
         # -Linha 2
         # tensão média
