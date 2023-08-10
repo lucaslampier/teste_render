@@ -64,10 +64,10 @@ def receive_data():
 
 
 
-auth = dash_auth.BasicAuth(
-    app,
-    VALID_USERNAME_PASSWORD_PAIRS
-)
+# auth = dash_auth.BasicAuth(
+#     app,
+#     VALID_USERNAME_PASSWORD_PAIRS
+# )
 
 titulo_principal = dmc.Title(
     "Central de monitoramento 2Neuron",
